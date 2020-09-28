@@ -1,6 +1,9 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { Route, Switch } from 'react-router-dom'
+import LecturaDatos from '../LecturaDatos'
 import Login from '../Login/Login'
+import Navegacion from '../Navegacion'
 import './App.css'
 
 const App = () => {
@@ -13,7 +16,11 @@ const App = () => {
 
   return (
     <div className="App">
-      App
+      <Navegacion />
+      <Switch>
+        <Route exact path="/" component={() => 'Explicación'} />
+        <Route path="/datos" component={LecturaDatos} />
+      </Switch>
     </div>
   )
 }

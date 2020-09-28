@@ -1,6 +1,10 @@
 const login = 'login/login'
 
-export default function reducer(state = {}, action) {
+const defaultState = {
+  usuario: window.location.href.indexOf('localhost') >= 0
+}
+
+export default function reducer(state = defaultState, action) {
   switch (action.type) {
     case login: {
       return {
