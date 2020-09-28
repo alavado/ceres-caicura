@@ -47,11 +47,15 @@ table {
 	border-spacing: 0;
 }
 
-*, button, a, table, input {
+*, button, a, table, input, body {
 	font-family: 'Open Sans', sans-serif;
 }
 
 a {
 	text-decoration: inherit;
 	color: inherit;
+}
+
+button {
+	cursor: pointer;
 }

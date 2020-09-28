@@ -5,11 +5,11 @@ import './Navegacion.css'
 const Navegacion = () => {
   return (
     <div className="Navegacion">
-      <LinkNavegacion to="/">Introducción</LinkNavegacion>
-      <LinkNavegacion to="/datos">Datos</LinkNavegacion>
-      <LinkNavegacion to="/clasificacion">Clasificación</LinkNavegacion>
-      <LinkNavegacion to="/modelos">Modelos degradación</LinkNavegacion>
-      <LinkNavegacion to="/resultados">Resultados</LinkNavegacion>
+      <LinkNavegacion to="/">1. Introducción</LinkNavegacion>
+      <LinkNavegacion to="/datos">2. Datos</LinkNavegacion>
+      <LinkNavegacion to="/clasificacion">3. Clasificación</LinkNavegacion>
+      <LinkNavegacion to="/modelos">4. Modelos degradación</LinkNavegacion>
+      <LinkNavegacion to="/resultados">5. Resultados</LinkNavegacion>
     </div>
   )
 }

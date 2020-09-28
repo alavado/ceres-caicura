@@ -4,3 +4,7 @@
   display: flex;
   flex-direction: column;
 }
+
+.App__contenedor {
+  padding: 2rem;
+}

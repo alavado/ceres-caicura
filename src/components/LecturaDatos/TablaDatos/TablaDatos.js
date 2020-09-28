@@ -12,7 +12,7 @@ const TablaDatos = () => {
 
   return (
     <div className="TablaDatos">
-      <h1>{nombreArchivo}</h1>
+      <h1>Archivo seleccionado: {nombreArchivo}</h1>
       <table>
         <thead>
           <tr>

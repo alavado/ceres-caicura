@@ -24,8 +24,8 @@ const LecturaDatos = () => {
 
   return (
     <div className="LecturaDatos">
-      <input ref={archivo} type="file" accept=".csv" />
-      <button onClick={leerArchivo}>Leer</button>
+      <h1>Seleccione el archivo con datos de los peces</h1>
+      <input ref={archivo} type="file" accept=".csv" onChange={leerArchivo} />
       <TablaDatos />
     </div>
   )
