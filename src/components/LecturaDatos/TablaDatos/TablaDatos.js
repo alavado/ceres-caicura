@@ -23,7 +23,7 @@ const TablaDatos = () => {
           </tr>
         </thead>
         <tbody>
-          {datos.map(([id, fecha, peso, largo]) => (
+          {datos.map(({ id, fecha, peso, largo }) => (
             <tr key={id}>
               <td>{id}</td>
               <td>{fecha}</td>

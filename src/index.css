@@ -47,6 +47,10 @@ table {
 	border-spacing: 0;
 }
 
+* {
+	box-sizing: border-box;
+}
+
 *, button, a, table, input, body {
 	font-family: 'Open Sans', sans-serif;
 }

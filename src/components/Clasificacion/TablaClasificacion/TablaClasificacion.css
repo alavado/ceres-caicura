@@ -1,5 +1,42 @@
+.TablaClasificacion {
+  font-size: .9rem;
+  margin: 1rem 0;
+}
+
 .TablaClasificacion__header {
   display: flex;
+  padding: .5rem 0;
+  border: 1px solid black;
+}
+
+.TablaClasificacion__fila {
+  padding: .5rem 0;
+  border: 1px solid black;
+}
+
+.TablaClasificacion__header div:first-child,
+.TablaClasificacion__fila div:first-child {
+  min-width: 5rem;
+}
+
+.TablaClasificacion__header div:nth-child(2),
+.TablaClasificacion__fila div:nth-child(2) {
+  min-width: 10rem;
+}
+
+.TablaClasificacion__header div:nth-child(3),
+.TablaClasificacion__fila div:nth-child(3) {
+  min-width: 10rem;
+}
+
+.TablaClasificacion__header div:nth-child(4),
+.TablaClasificacion__fila div:nth-child(4) {
+  min-width: 10rem;
+}
+
+.TablaClasificacion__header div,
+.TablaClasificacion__fila div {
+  padding: 0 .5rem;
 }
 
 .TablaClasificacion__fila {

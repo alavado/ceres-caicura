@@ -9,7 +9,7 @@ const Navegacion = () => {
       <LinkNavegacion to="/datos">2. Datos</LinkNavegacion>
       <LinkNavegacion to="/clasificacion">3. Clasificación</LinkNavegacion>
       <LinkNavegacion to="/modelos">4. Modelos degradación</LinkNavegacion>
-      <LinkNavegacion to="/resultados">5. Resultados</LinkNavegacion>
+      <LinkNavegacion to="/resultados">5. Cálculo biomasa</LinkNavegacion>
     </div>
   )
 }
