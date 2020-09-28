@@ -1,9 +1,13 @@
 import React, { useRef } from 'react'
+import { useDispatch } from 'react-redux'
 import './LecturaDatos.css'
+import TablaDatos from './TablaDatos'
+import { guardaEstosDatos } from '../../redux/ducks/datos'
 
 const LecturaDatos = () => {
 
   const archivo = useRef()
+  const dispatch = useDispatch()
 
   const leerArchivo = () => {
     archivo.current.files[0].text()
@@ -11,9 +15,10 @@ const LecturaDatos = () => {
         const lineas = texto.split('\n')
         const datos = []
         lineas.slice(1).forEach(linea => {
-          const [id,,,, peso, largo] = linea.split(',')
-          datos.push([id, peso, largo])
+          const [id,fecha,,,, peso, largo] = linea.split(',')
+          datos.push([id, fecha, peso, largo])
         })
+        dispatch(guardaEstosDatos(datos, archivo.current.files[0].name))
       })
   }
 
@@ -21,6 +26,7 @@ const LecturaDatos = () => {
     <div className="LecturaDatos">
       <input ref={archivo} type="file" accept=".csv" />
       <button onClick={leerArchivo}>Leer</button>
+      <TablaDatos />
     </div>
   )
 }

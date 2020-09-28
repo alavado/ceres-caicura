@@ -1,0 +1,7 @@
+.LinkNavegacion {
+  padding: 1rem;
+}
+
+.LinkNavegacion--activo {
+  background-color: red;
+}
