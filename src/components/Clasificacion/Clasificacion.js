@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { clasificarPeces } from '../../helpers/clasificacion'
 import { guardaEstosDatos } from '../../redux/ducks/datos'
 import './Clasificacion.css'
+import GraficosClasificacion from './GraficosClasificacion'
 import TablaClasificacion from './TablaClasificacion'
 
 const Clasificacion = () => {
@@ -33,7 +34,10 @@ const Clasificacion = () => {
         </label>
         <button type="submit">Clasificar peces</button>
       </form>
-      <TablaClasificacion />
+      <div className="Clasificacion__contenedor">
+        <TablaClasificacion />
+        <GraficosClasificacion />
+      </div>
     </div>
   )
 }

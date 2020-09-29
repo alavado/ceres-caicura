@@ -16,7 +16,7 @@ const TablaClasificacion = () => {
         <div>Clase</div>
       </div>
       <div>
-        {datos.slice().sort((d1, d2) => d1.clase > d2.clase ? 1 : -1).map(({ id, fecha, peso, largo, clase }) => (
+        {datos.slice().sort((d1, d2) => d1.largo > d2.largo ? 1 : -1).map(({ id, fecha, peso, largo, clase }) => (
           <div className="TablaClasificacion__fila" key={`clasif-${id}`}>
             <div>{id}</div>
             <div>{fecha}</div>

@@ -1,3 +1,7 @@
 .Clasificacion {
   padding-bottom: 10rem;
 }
+
+.Clasificacion__contenedor {
+  display: flex;
+}
