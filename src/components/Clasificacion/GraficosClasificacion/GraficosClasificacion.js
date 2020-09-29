@@ -7,7 +7,7 @@ import { coloresClases } from '../../../helpers/colores'
 
 const GraficosClasificacion = () => {
 
-  const { datos } = useSelector(state => state.datos)
+  const { datos, fechas } = useSelector(state => state.datos)
   
   return (
     <div className="GraficosClasificacion">
@@ -17,17 +17,23 @@ const GraficosClasificacion = () => {
           datasets: [{
             backgroundColor: datos.map(dato => coloresClases[dato.clase]),
             data: datos.map(dato => ({
-              x: moment(dato.fecha, 'DD-MM-YYYY').unix(),
+              x: dato.fecha.unix(),
               y: dato.largo
             }))
           }]
         }}
         options={{
           maintainAspectRatio: false,
-          xAxes: [{
-            type: 'linear',
-            position: 'bottom'
-          }],
+          scales: {
+            xAxes: [{
+              scaleLabel: 'Fecha',
+              type: 'linear',
+              position: 'bottom'
+            }],
+            yAxes: [{
+              scaleLabel: 'Largo [cm]'
+            }]
+          },
           legend: {
             display: false
           }

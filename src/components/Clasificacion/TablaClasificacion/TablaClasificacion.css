@@ -42,3 +42,9 @@
 .TablaClasificacion__fila {
   display: flex;
 }
+
+.TablaClasificacion__circulo_clase {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 100%;
+}

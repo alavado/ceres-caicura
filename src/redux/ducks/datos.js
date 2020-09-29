@@ -1,20 +1,23 @@
+import { generarFechasMoment } from '../../helpers/fechas'
+import moment from 'moment'
+
 const guardarDatos = 'datos/guardarDatos'
 
 const defaultState = {
-  datos: []
+  datos: [],
+  fechas: generarFechasMoment()
 }
 
 export default function reducer(state = defaultState, action) {
   switch (action.type) {
     case guardarDatos: {
       const { datos, nombreArchivo } = action.payload
-      console.log(datos)
       return {
         ...state,
         datos: Array.isArray(datos[0])
           ? datos.map(([id, fecha, peso, largo]) => ({
             id,
-            fecha,
+            fecha: moment(fecha, 'DD-MM-YYYY'),
             peso: Number(peso),
             largo: Number(largo),
           }))

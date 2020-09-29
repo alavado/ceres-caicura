@@ -26,7 +26,7 @@ const TablaDatos = () => {
           {datos.map(({ id, fecha, peso, largo }) => (
             <tr key={id}>
               <td>{id}</td>
-              <td>{fecha}</td>
+              <td>{fecha.format('DD/MM')}</td>
               <td>{peso}</td>
               <td>{largo}</td>
             </tr>
