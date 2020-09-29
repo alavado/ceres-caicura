@@ -20,6 +20,7 @@ const ModelosDegradacion = () => {
   
   return (
     <div className="ModelosDegradacion">
+      <h1 className="ModelosDegradacion__titulo">Modelos de degradación por clase</h1>
       {clases.map(clase => {
         const datosClase = datos.filter(d => d.clase === clase)
         const minClase = datosClase.reduce((prev, d) => Math.min(prev, d.largo), [datosClase[0].largo])
@@ -59,6 +60,7 @@ const ModelosDegradacion = () => {
                     ]
                   }}
                   options={{
+                    animation: false,
                     maintainAspectRatio: false,
                     legend: {
                       display: false
@@ -77,7 +79,7 @@ const ModelosDegradacion = () => {
                       yAxes: [{
                         ticks: {
                           min: 0,
-                          max: datos.reduce((prev, v) => Math.max(prev, v.peso), datos[0].peso)
+                          max: 6000
                         },
                         scaleLabel: 'Peso [g]'
                       }]

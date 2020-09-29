@@ -13,7 +13,6 @@ const TablaDatos = () => {
   return (
     <div className="TablaDatos">
       <h1>Archivo seleccionado: {nombreArchivo}</h1>
-      <h2>Vista previa</h2>
       <table>
         <thead>
           <tr className="TablaDatos__fila">

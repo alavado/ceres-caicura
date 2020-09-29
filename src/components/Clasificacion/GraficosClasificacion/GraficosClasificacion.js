@@ -24,6 +24,7 @@ const GraficosClasificacion = () => {
         }}
         options={{
           maintainAspectRatio: false,
+          animation: false,
           scales: {
             xAxes: [{
               scaleLabel: 'Fecha',

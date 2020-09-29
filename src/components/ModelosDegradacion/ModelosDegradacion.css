@@ -2,6 +2,12 @@
   display: flex;
 }
 
+.ModelosDegradacion__titulo {
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
 .ModelosDegradacion__grafico {
   padding: 2rem;
   display: flex;

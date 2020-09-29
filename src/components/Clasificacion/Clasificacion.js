@@ -9,6 +9,7 @@ import TablaClasificacion from './TablaClasificacion'
 
 const Clasificacion = () => {
 
+  const [metodo, setMetodo] = useState('simple')
   const { datos } = useSelector(state => state.datos)
   const { nombreArchivo } = useSelector(state => state.datos)
   const dispatch = useDispatch()
@@ -20,13 +21,12 @@ const Clasificacion = () => {
 
   const clasificar = e => {
     e.preventDefault()
-    console.log(clasificarPeces(datos, nClusters))
-    dispatch(guardaEstosDatos(clasificarPeces(datos, nClusters)))
+    dispatch(guardaEstosDatos(clasificarPeces(datos, nClusters, metodo)))
   }
 
   return (
     <div className="Clasificacion">
-      Clasificacion
+      <h1 className="Clasificacion__titulo">Clasificacion por largo de pez</h1>
       <form onSubmit={clasificar}>
         <label>
           Ingrese número de clases:
@@ -38,7 +38,14 @@ const Clasificacion = () => {
             min={2}
           />
         </label>
-        <button type="submit">Clasificar peces (IA)</button>
+        <label>
+          Método clasificación
+          <select value={metodo} onChange={e => setMetodo(e.target.value)}>
+            <option value="simple">Partición simple</option>
+            <option value="automatico">Automático (IA)</option>
+          </select>
+        </label>
+        <button type="submit">Clasificar peces</button>
       </form>
       <div className="Clasificacion__contenedor">
         <TablaClasificacion />

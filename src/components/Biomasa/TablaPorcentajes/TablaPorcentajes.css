@@ -1,0 +1,7 @@
+.TablaPorcentajes__fila {
+  display: flex;
+}
+
+.TablaPorcentajes__fila div {
+  width: 10rem;
+}
