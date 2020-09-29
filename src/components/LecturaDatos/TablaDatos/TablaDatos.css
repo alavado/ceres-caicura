@@ -1,0 +1,5 @@
+.TablaDatos__fila th,
+.TablaDatos__fila td {
+  padding: .5rem;
+  border: 1px solid black;
+}

@@ -13,9 +13,10 @@ const TablaDatos = () => {
   return (
     <div className="TablaDatos">
       <h1>Archivo seleccionado: {nombreArchivo}</h1>
+      <h2>Vista previa</h2>
       <table>
         <thead>
-          <tr>
+          <tr className="TablaDatos__fila">
             <th>ID</th>
             <th>Fecha Extracción</th>
             <th>Peso estimado [g]</th>
@@ -24,7 +25,7 @@ const TablaDatos = () => {
         </thead>
         <tbody>
           {datos.map(({ id, fecha, peso, largo }) => (
-            <tr key={id}>
+            <tr className="TablaDatos__fila" key={id}>
               <td>{id}</td>
               <td>{fecha.format('DD/MM')}</td>
               <td>{peso}</td>

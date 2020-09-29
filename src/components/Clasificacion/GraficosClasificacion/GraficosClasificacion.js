@@ -28,7 +28,10 @@ const GraficosClasificacion = () => {
             xAxes: [{
               scaleLabel: 'Fecha',
               type: 'linear',
-              position: 'bottom'
+              position: 'bottom',
+              ticks: {
+                callback: value => moment(value).format('DD/MM')
+              }
             }],
             yAxes: [{
               scaleLabel: 'Largo [cm]'
