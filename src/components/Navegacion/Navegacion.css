@@ -4,5 +4,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  background-color: gray;
+  background-color: #0288D1;
+  color: white;
+  font-weight: 600;
 }

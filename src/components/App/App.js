@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Route, Switch } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import Biomasa from '../Biomasa'
 import Clasificacion from '../Clasificacion'
 import Header from '../Header/Header'

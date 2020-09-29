@@ -4,7 +4,7 @@ import './Header.css'
 const Header = () => {
   return (
     <div className="Header">
-      CERES BCA
+      CERES BCA - ESTIMACIÓN BIOMASA CENTRO CAICURA BLUMAR
     </div>
   )
 }

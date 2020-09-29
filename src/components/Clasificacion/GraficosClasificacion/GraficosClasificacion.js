@@ -30,7 +30,7 @@ const GraficosClasificacion = () => {
               type: 'linear',
               position: 'bottom',
               ticks: {
-                callback: value => moment(value).format('DD/MM')
+                callback: value => moment(value, 'X').format('DD/MM')
               }
             }],
             yAxes: [{
