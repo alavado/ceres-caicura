@@ -16,9 +16,9 @@ const Biomasa = () => {
   const [diasAparicionHuesos, setDiasAparicionHuesos] = useState(90)
   const dispatch = useDispatch()
 
-  // if (!nombreArchivo) {
-  //   return <Redirect to="/" />
-  // }
+  if (!nombreArchivo) {
+    return <Redirect to="/" />
+  }
 
   return (
     <div className="Biomasa">
