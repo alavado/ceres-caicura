@@ -8,8 +8,8 @@ const Navegacion = () => {
       <LinkNavegacion to="/">1. Introducción</LinkNavegacion>
       <LinkNavegacion to="/datos">2. Datos</LinkNavegacion>
       <LinkNavegacion to="/clasificacion">3. Clasificación</LinkNavegacion>
-      <LinkNavegacion to="/modelos">4. Modelos degradación</LinkNavegacion>
-      <LinkNavegacion to="/resultados">5. Cálculo biomasa</LinkNavegacion>
+      <LinkNavegacion to="/degradacion">4. Modelos degradación</LinkNavegacion>
+      <LinkNavegacion to="/biomasa">5. Cálculo biomasa</LinkNavegacion>
     </div>
   )
 }
