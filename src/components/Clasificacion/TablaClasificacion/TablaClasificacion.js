@@ -24,7 +24,7 @@ const TablaClasificacion = () => {
             <div>{peso}</div>
             <div>{largo}</div>
             <div>
-              {clase ??
+              {clase !== undefined &&
                 <div
                   className="TablaClasificacion__circulo_clase"
                   style={{ backgroundColor: coloresClases[clase] }} 

@@ -1,5 +1,29 @@
+.Biomasa {
+  padding-bottom: 10rem;
+}
+
 .Biomasa__titulo {
   font-weight: bold;
   font-size: 1.25rem;
   margin-bottom: 1rem;
+}
+
+.Biomasa__contenedor {
+  display: flex;
+}
+
+.Biomasa__inputs {
+  display: flex;
+  flex-direction: column;
+  font-size: .9rem;
+}
+
+.Biomasa__label {
+  width: 10rem;
+  margin-right: .5rem;
+}
+
+.Biomasa__inputs label {
+  display: flex;
+  margin-bottom: .25rem;
 }

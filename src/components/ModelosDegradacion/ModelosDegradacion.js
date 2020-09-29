@@ -33,7 +33,7 @@ const ModelosDegradacion = () => {
             <h2>Modelo para clase {clase} ({minClase} cm - {maxClase} cm)</h2>
             <div className="ModelosDegradacion__contenedor">
               <div>
-                <p>Parámetros</p>
+                <p>Parámetros estimados</p>
                 <p>C0 = {Math.exp(b + m * fechas[0].unix())}</p>
                 <p>k = {m}</p>
               </div>

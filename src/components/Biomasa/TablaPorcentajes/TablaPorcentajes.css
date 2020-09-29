@@ -1,7 +1,27 @@
+.TablaPorcentajes {
+  margin-top: 1rem;
+  font-size: .85rem;
+}
+
 .TablaPorcentajes__fila {
   display: flex;
 }
 
 .TablaPorcentajes__fila div {
-  width: 10rem;
+  width: 6rem;
+  border: 1px solid black;
+}
+
+.TablaPorcentajes__fila div:first-child {
+  width: 9rem;
+}
+
+.TablaPorcentajes__fila div {
+  padding: .25rem;
+}
+
+.TablaPorcentajes__titulo {
+  font-weight: 600;
+  margin-bottom: .5rem;
+  font-size: 1rem;
 }

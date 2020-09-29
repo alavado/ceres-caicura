@@ -42,7 +42,7 @@ const Clasificacion = () => {
           Método clasificación
           <select value={metodo} onChange={e => setMetodo(e.target.value)}>
             <option value="simple">Partición simple</option>
-            <option value="automatico">Automático (IA)</option>
+            <option value="automatico">Análisis de grupos</option>
           </select>
         </label>
         <button type="submit">Clasificar peces</button>

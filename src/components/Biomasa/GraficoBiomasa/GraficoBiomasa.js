@@ -1,10 +1,20 @@
 import React from 'react'
+import { Line } from 'react-chartjs-2'
 import './GraficoBiomasa.css'
 
 const GraficoBiomasa = () => {
   return (
     <div className="GraficoBiomasa">
-      GraficoBiomasa
+      <Line
+        data={{
+          labels: {
+            
+          }
+          datasets: [{
+
+          }]
+        }}
+      />
     </div>
   )
 }
