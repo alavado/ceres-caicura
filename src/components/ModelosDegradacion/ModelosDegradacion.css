@@ -7,3 +7,15 @@
   font-size: 1.25rem;
   margin-bottom: 1rem;
 }
+
+.ModelosDegradacion__subtitulo {
+  border-bottom: 1px solid black;
+  width: fit-content;
+}
+
+.ModelosDegradacion__circulito_clase {
+  width: .65rem;
+  height: .65rem;
+  border-radius: 100%;
+  display: inline-block;
+}

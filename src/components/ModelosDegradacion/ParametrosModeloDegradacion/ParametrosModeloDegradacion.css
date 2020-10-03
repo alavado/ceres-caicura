@@ -1,0 +1,12 @@
+.ParametrosModeloDegradacion {
+  margin-top: 1rem;
+}
+
+.ParametrosModeloDegradacion__titulo {
+  font-weight: 600;
+}
+
+.ParametrosModeloDegradacion__parametro {
+  font-size: .85rem;
+  margin: .5rem 0;
+}

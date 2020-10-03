@@ -8,6 +8,7 @@ import moment from 'moment'
 import './ModelosDegradacion.css'
 import { Redirect } from 'react-router-dom'
 import GraficoModeloDegradacion from './GraficoModeloDegradacion'
+import ParametrosModeloDegradacion from './ParametrosModeloDegradacion'
 
 const ModelosDegradacion = () => {
   
@@ -23,13 +24,12 @@ const ModelosDegradacion = () => {
   return (
     <div className="ModelosDegradacion">
       <h1 className="ModelosDegradacion__titulo">Modelo periferia obtenido</h1>
-      <p>Este modelo se construye promediando los modelos por clase detallados más abajo</p>
+      <p>Este modelo se construye promediando los modelos de degradación por clase especificados más abajo</p>
       <div className="ModelosDegradacion__contenedor">
-        <div>
-          <p>Parámetros estimados</p>
-          <p>C0 = {Math.exp(b + m * fechas[0].unix())}</p>
-          <p>k = {m}</p>
-        </div>
+        <ParametrosModeloDegradacion
+          k={m}
+          c0={Math.exp(b + m * fechas[0].unix())}
+        />
         <GraficoModeloDegradacion
           b={b}
           m={m}
@@ -48,13 +48,12 @@ const ModelosDegradacion = () => {
         const { m, b } = calcularModelo(datosRegresion.map(([x, y]) => [x, Math.log(y)]))
         return (
           <div key={`contenedor-modelo-${clase}`}>
-            <h2>Modelo para clase {clase} ({minClase} cm - {maxClase} cm)</h2>
+            <h2 className="ModelosDegradacion__subtitulo">Modelo para clase <span className="ModelosDegradacion__circulito_clase" style={{ backgroundColor: coloresClases[clase] }} /> ({minClase} cm - {maxClase} cm)</h2>
             <div className="ModelosDegradacion__contenedor">
-              <div>
-                <p>Parámetros estimados</p>
-                <p>C0 = {Math.exp(b + m * fechas[0].unix())}</p>
-                <p>k = {m}</p>
-              </div>
+              <ParametrosModeloDegradacion
+                k={m}
+                c0={Math.exp(b + m * fechas[0].unix())}
+              />
               <GraficoModeloDegradacion
                 b={b}
                 m={m}
