@@ -26,19 +26,49 @@ const Biomasa = () => {
 
   return (
     <div className="Biomasa">
-      <h1 className="Biomasa__titulo">Composición biomasa</h1>
+      <h1 className="Biomasa__titulo">Distribución modelos</h1>
+      <label>
+        <div className="Biomasa__label">Periferia:</div>
+        <input
+          type="number"
+          max={100}
+          min={0}
+        />
+      </label>
+      <label>
+        <div className="Biomasa__label">Centro:</div>
+        <input
+          type="number"
+          max={100}
+          min={0}
+        />
+      </label>
+      <h1 className="Biomasa__titulo">Estados de descomposición</h1>
       <div className="Biomasa__inputs">
         <label>
           <div className="Biomasa__label">Tasa cambio de estado diaria:</div>
-          <input value={tasaCambioEstado} step={0.05} onChange={e => setTasaCambioEstado(Number(e.target.value))} type="number" />
+          <input
+            value={tasaCambioEstado}
+            step={0.05}
+            onChange={e => setTasaCambioEstado(Number(e.target.value))}
+            type="number"
+          />
         </label>
         <label>
           <div className="Biomasa__label">Día aparición tipo pasta:</div>
-          <input value={diasAparicionPasta} onChange={e => setDiasAparicionPasta(Number(e.target.value))} type="number" />
+          <input
+            value={diasAparicionPasta}
+            onChange={e => setDiasAparicionPasta(Number(e.target.value))}
+            type="number"
+          />
         </label>
         <label>
           <div className="Biomasa__label">Día aparición huesos y escamas:</div>
-          <input value={diasAparicionHuesos} onChange={e => setDiasAparicionHuesos(Number(e.target.value))} type="number" />
+          <input
+            value={diasAparicionHuesos}
+            onChange={e => setDiasAparicionHuesos(Number(e.target.value))}
+            type="number"
+          />
         </label>
         <label>
           <div className="Biomasa__label">Inicio faena: </div>

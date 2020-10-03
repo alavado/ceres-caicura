@@ -34,54 +34,56 @@ const ModeloCentro = () => {
           />
         </label>
       </div>
-      <Scatter
-        data={{
-          labels: fechas.map(fecha => fecha.unix()),
-          datasets: [
-            {
-              data: datos.map(dato => ({
-                x: dato.fecha.unix(),
-                y: dato.peso
-              })),
-              backgroundColor: coloresClases['promedio']
+      <div className="ModeloCentro__grafico">
+        <Scatter
+          data={{
+            labels: fechas.map(fecha => fecha.unix()),
+            datasets: [
+              {
+                data: datos.map(dato => ({
+                  x: dato.fecha.unix(),
+                  y: dato.peso
+                })),
+                backgroundColor: coloresClases['promedio']
+              },
+              {
+                data: fechas.map(fecha => ({
+                  x: fecha.unix(),
+                  y: Math.exp(b + k * fecha.unix())
+                })),
+                pointRadius: 1,
+                backgroundColor: 'orange',
+              }
+            ]
+          }}
+          options={{
+            animation: false,
+            maintainAspectRatio: false,
+            legend: {
+              display: false
             },
-            {
-              data: fechas.map(fecha => ({
-                x: fecha.unix(),
-                y: Math.exp(b + k * fecha.unix())
-              })),
-              pointRadius: 1,
-              backgroundColor: 'orange',
+            scales: {
+              xAxes: [{
+                gridLines: {
+                  display: false
+                },
+                ticks: {
+                  min: fechas[0].unix(),
+                  callback: value => moment(value, 'X').format('DD/MM')
+                },
+                scaleLabel: 'Fecha'
+              }],
+              yAxes: [{
+                ticks: {
+                  min: 0,
+                  max: 6000
+                },
+                scaleLabel: 'Peso [g]'
+              }]
             }
-          ]
-        }}
-        options={{
-          animation: false,
-          maintainAspectRatio: false,
-          legend: {
-            display: false
-          },
-          scales: {
-            xAxes: [{
-              gridLines: {
-                display: false
-              },
-              ticks: {
-                min: fechas[0].unix(),
-                callback: value => moment(value, 'X').format('DD/MM')
-              },
-              scaleLabel: 'Fecha'
-            }],
-            yAxes: [{
-              ticks: {
-                min: 0,
-                max: 6000
-              },
-              scaleLabel: 'Peso [g]'
-            }]
-          }
-        }}
-      />
+          }}
+        />
+      </div>
     </div>
   )
 }
