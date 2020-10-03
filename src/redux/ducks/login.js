@@ -1,7 +1,7 @@
 const login = 'login/login'
 
 const defaultState = {
-  usuario: window.location.href.indexOf('localhost') >= 0
+  usuario: true//window.location.href.indexOf('localhost') >= 0
 }
 
 export default function reducer(state = defaultState, action) {
