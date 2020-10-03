@@ -7,7 +7,7 @@ import TablaPorcentajes from './TablaPorcentajes'
 // import GraficoBiomasa from './GraficoBiomasa'
 import './Biomasa.css'
 import 'react-datepicker/dist/react-datepicker.css'
-import { cambiaFechaInicioFaena, cambiaPorcentajeCentro, cambiaPorcentajePeriferia } from '../../redux/ducks/biomasa'
+import { cambiaDiasAparicionHuesos, cambiaDiasAparicionPasta, cambiaFechaInicioFaena, cambiaPorcentajeCentro, cambiaPorcentajePeriferia, cambiaTasaCambioEstado } from '../../redux/ducks/biomasa'
 
 registerLocale('es', es)
 
@@ -15,10 +15,7 @@ const Biomasa = () => {
 
   const { nombreArchivo } = useSelector(state => state.datos)
   const [inicioFaena, setInicioFaena] = useState(new Date())
-  const { porcentajeCentro, porcentajePeriferia } = useSelector(state => state.biomasa)
-  const [diasAparicionPasta, setDiasAparicionPasta] = useState(60)
-  const [diasAparicionHuesos, setDiasAparicionHuesos] = useState(90)
-  const [tasaCambioEstado, setTasaCambioEstado] = useState(0.1)
+  const { porcentajeCentro, porcentajePeriferia, diasAparicionHuesos, diasAparicionPasta, tasaCambioEstado } = useSelector(state => state.biomasa)
   const dispatch = useDispatch()
 
   if (!nombreArchivo) {
@@ -57,9 +54,9 @@ const Biomasa = () => {
             <div className="Biomasa__label">Tasa cambio de estado diaria:</div>
             <input
               value={tasaCambioEstado}
-              step={0.05}
+              step={0.01}
               min={0}
-              onChange={e => setTasaCambioEstado(Number(e.target.value))}
+              onChange={e => dispatch(cambiaTasaCambioEstado(e.target.value))}
               type="number"
             />
           </label>
@@ -67,7 +64,8 @@ const Biomasa = () => {
             <div className="Biomasa__label">Día aparición tipo pasta:</div>
             <input
               value={diasAparicionPasta}
-              onChange={e => setDiasAparicionPasta(Number(e.target.value))}
+              min={0}
+              onChange={e => dispatch(cambiaDiasAparicionPasta(e.target.value))}
               type="number"
             />
           </label>
@@ -75,7 +73,8 @@ const Biomasa = () => {
             <div className="Biomasa__label">Día aparición huesos y escamas:</div>
             <input
               value={diasAparicionHuesos}
-              onChange={e => setDiasAparicionHuesos(Number(e.target.value))}
+              min={0}
+              onChange={e => dispatch(cambiaDiasAparicionHuesos(e.target.value))}
               type="number"
             />
           </label>

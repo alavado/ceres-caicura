@@ -4,13 +4,6 @@ import { fechaInicial } from '../../../helpers/fechas'
 import { calcularModeloPromediado } from '../../../helpers/modelo'
 import './TablaPorcentajes.css'
 
-const estados = [
-  'Peces enteros',
-  'Mix sólido pasta',
-  'Tipo pasta',
-  'Huesos y escamas'
-]
-
 const TablaPorcentajes = () => {
 
   const [dias, setDias] = useState([
@@ -18,7 +11,7 @@ const TablaPorcentajes = () => {
   ])
   const { datos, fechas } = useSelector(state => state.datos)
   const { k, c0 } = useSelector(state => state.centro)
-  const { fechaInicioFaena, porcentajePeriferia, porcentajeCentro } = useSelector(state => state.biomasa)
+  const { fechaInicioFaena, porcentajePeriferia, porcentajeCentro, diasAparicionHuesos, diasAparicionPasta, tasaCambioEstado } = useSelector(state => state.biomasa)
   const diasDesdeHundimiento = dias.map(dia => fechaInicioFaena.diff(fechaInicial, 'days') + dia)
 
   const { m, b } = calcularModeloPromediado(datos, fechas)
@@ -27,6 +20,42 @@ const TablaPorcentajes = () => {
   const degradacionPeriferia = diasDesdeHundimiento.map(dias => (porcentajePeriferia / 100) * (100 - 100 * Math.exp(b + m * (fechaInicioFaena.clone().add(dias, 'days')).unix()) / pesoInicialModeloPeriferia))
   const degradacionCentro = diasDesdeHundimiento.map(dias => (porcentajeCentro / 100) * (100 - 100 * c0 * Math.exp(k * (fechaInicioFaena.clone().add(dias, 'days')).unix()) / pesoInicialModeloCentro))
   const degradaciones = degradacionPeriferia.map((d, i) => d + degradacionCentro[i])
+
+  let pecesEnteros = degradaciones.map(d => 100 - d)
+  let huesos = pecesEnteros.map((v, i) => {
+    const diasConPerdida = Math.max(0,  diasDesdeHundimiento[i] - diasAparicionHuesos)
+    const totalPerdida = diasConPerdida * tasaCambioEstado
+    return Math.max(0, Math.min(totalPerdida, v))
+  })
+  let pasta = pecesEnteros.map((v, i) => {
+    const diasConPerdida = Math.max(0, diasDesdeHundimiento[i] - diasAparicionPasta)
+    const totalPerdida = diasConPerdida * tasaCambioEstado
+    return Math.max(0, Math.min(totalPerdida, v - huesos[i]))
+  })
+  let mix = pecesEnteros.map((v, i) => {
+    const totalPerdida = diasDesdeHundimiento[i] * tasaCambioEstado
+    return Math.max(0, Math.min(totalPerdida, v - huesos[i] - pasta[i]))
+  })
+  pecesEnteros = pecesEnteros.map((v, i) => Math.max(0, v - huesos[i] - pasta[i] - mix[i]))
+
+  const estados = [
+    {
+      nombre: 'Peces enteros',
+      valores: pecesEnteros
+    },
+    {
+      nombre: 'Mix sólido pasta',
+      valores: mix
+    },
+    {
+      nombre: 'Tipo pasta',
+      valores: pasta
+    },
+    {
+      nombre: 'Huesos y escamas',
+      valores: huesos
+    }
+  ]
 
   return (
     <div className="TablaPorcentajes">
@@ -47,7 +76,7 @@ const TablaPorcentajes = () => {
         <div className="TablaPorcentajes__fila">
           <div>Día faena</div>
           {dias.map((dia, i) => (
-            <div key={`dia-${dia}`}>
+            <div key={`dia-faena-${dia}`}>
               {dia}
               {/* <input value={dia} type="number" onChange={e => setDias(prevDias => {
                 return [...prevDias.slice(0, i), Number(e.target.value), ...prevDias.slice(i + 1)]
@@ -57,11 +86,8 @@ const TablaPorcentajes = () => {
         </div>
         {estados.map((estado, i) => (
           <div key={estado} className="TablaPorcentajes__fila">
-            <div>{estado}</div>
-            <div>0%</div>
-            <div>0%</div>
-            <div>0%</div>
-            <div>0%</div>
+            <div>{estado.nombre}</div>
+            {estado.valores.map(v => <div>{v.toLocaleString('de-DE', { maximumFractionDigits: 1 })}%</div>)}
           </div>
         ))}
         <div className="TablaPorcentajes__fila">
