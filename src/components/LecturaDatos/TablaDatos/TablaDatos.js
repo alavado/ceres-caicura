@@ -12,8 +12,8 @@ const TablaDatos = () => {
 
   return (
     <div className="TablaDatos">
-      <h1>Archivo seleccionado: {nombreArchivo}</h1>
-      <table>
+      <h1 className="TablaDatos__nombre_archivo">Archivo seleccionado: {nombreArchivo}</h1>
+      <table className="TablaDatos__tabla">
         <thead>
           <tr className="TablaDatos__fila">
             <th>ID</th>
@@ -27,8 +27,8 @@ const TablaDatos = () => {
             <tr className="TablaDatos__fila" key={id}>
               <td>{id}</td>
               <td>{fecha.format('DD/MM')}</td>
-              <td>{peso}</td>
-              <td>{largo}</td>
+              <td>{peso.toLocaleString('de-DE')}</td>
+              <td>{largo.toLocaleString('de-DE')}</td>
             </tr>
           ))}
         </tbody>

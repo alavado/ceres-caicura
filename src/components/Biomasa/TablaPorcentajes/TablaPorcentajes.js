@@ -25,6 +25,8 @@ const TablaPorcentajes = () => {
 
   const degradaciones = diasDesdeHundimiento.map(dias => 100 - 100 * Math.exp(b + m * (fechaInicioFaena.clone().add(dias, 'days')).unix()) / pesoInicial)
 
+  
+
   return (
     <div className="TablaPorcentajes">
       <h1 className="TablaPorcentajes__titulo">Resultados</h1>

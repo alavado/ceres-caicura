@@ -27,9 +27,9 @@ const Clasificacion = () => {
   return (
     <div className="Clasificacion">
       <h1 className="Clasificacion__titulo">Clasificacion por largo de pez</h1>
-      <form onSubmit={clasificar}>
-        <label>
-          Ingrese número de clases:
+      <form className="Clasificacion__parametros" onSubmit={clasificar}>
+        <label className="Clasificacion__parametro">
+          <div className="Clasificacion__label">Número de clases:</div>
           <input
             type="number"
             onChange={e => setNClusters(Number(e.target.value))}
@@ -38,14 +38,14 @@ const Clasificacion = () => {
             min={1}
           />
         </label>
-        <label>
-          Método clasificación
+        <label className="Clasificacion__parametro">
+          <div className="Clasificacion__label">Método:</div>
           <select value={metodo} onChange={e => setMetodo(e.target.value)}>
             <option value="simple">Partición simple</option>
             <option value="automatico">Análisis de grupos</option>
           </select>
         </label>
-        <button type="submit">Clasificar peces</button>
+        <button className="Clasificacion__boton" type="submit">Clasificar peces</button>
       </form>
       <div className="Clasificacion__contenedor">
         <TablaClasificacion />

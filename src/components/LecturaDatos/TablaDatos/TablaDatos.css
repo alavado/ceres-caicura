@@ -1,5 +1,29 @@
+.TablaDatos__tabla {
+  box-shadow: 0rem .05rem .5rem rgba(0, 0, 0, .25);
+}
+
+.TablaDatos__fila th {
+  background-color: #0288D1;
+  color: white;
+  font-weight: 600;
+}
+
 .TablaDatos__fila th,
 .TablaDatos__fila td {
-  padding: .5rem;
-  border: 1px solid black;
+  padding: .5rem 1rem;
+  text-align: center;
+}
+
+.TablaDatos__fila {
+  font-size: .85rem;
+}
+
+.TablaDatos__fila:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+.TablaDatos__nombre_archivo {
+  padding: 1rem 0;
+  font-weight: 600;
+  text-align: center;
 }

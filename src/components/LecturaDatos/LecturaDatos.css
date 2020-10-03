@@ -1,5 +1,8 @@
 .LecturaDatos {
   padding-bottom: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .LecturaDatos__titulo {

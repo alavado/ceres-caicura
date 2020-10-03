@@ -21,9 +21,9 @@ const TablaClasificacion = () => {
           <div className="TablaClasificacion__fila" key={`clasif-${id}`}>
             <div>{id}</div>
             <div>{fecha.format('DD/MM')}</div>
-            <div>{peso}</div>
-            <div>{largo}</div>
-            <div>
+            <div>{peso.toLocaleString('de-DE')}</div>
+            <div>{largo.toLocaleString('de-DE')}</div>
+            <div className="TablaClasificacion__td_circulito">
               {clase !== undefined &&
                 <div
                   className="TablaClasificacion__circulo_clase"

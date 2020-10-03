@@ -11,3 +11,36 @@
   font-size: 1.25rem;
   margin-bottom: 1rem;
 }
+
+.Clasificacion__parametros {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.Clasificacion__parametro {
+  display: flex;
+  font-size: .9rem;
+  align-items: center;
+  margin-bottom: .5rem;
+}
+
+.Clasificacion__label {
+  margin-right: .25rem;
+}
+
+.Clasificacion__boton {
+  background-color: #0288D1;
+  color: white;
+  padding: .5rem 2rem;
+  border-radius: 1rem;
+  font-weight: 600;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, .25);
+  margin-top: .5rem;
+}
+
+.Clasificacion__boton:hover {
+  filter: brightness(110%);
+}
