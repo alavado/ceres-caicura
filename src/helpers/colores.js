@@ -1,5 +1,6 @@
 export const coloresClases = {
   0: 'red',
   1: 'green',
-  2: 'blue'
+  2: 'blue',
+  'promedio': 'orange'
 }

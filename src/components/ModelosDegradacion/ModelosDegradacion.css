@@ -7,10 +7,3 @@
   font-size: 1.25rem;
   margin-bottom: 1rem;
 }
-
-.ModelosDegradacion__grafico {
-  padding: 2rem;
-  display: flex;
-  height: 50vh;
-  width: 60vw;
-}

@@ -9,7 +9,10 @@ export const calcularModeloPromediado = (datos, fechas) => {
   const modelos = clases.map(clase => {
     const datosClase = datos.filter(d => d.clase === clase)
     const promedioClase = max(datosClase.map(d => d.peso))
-    const datosRegresion = [...datosClase.map(d => [d.fecha.unix(), d.peso]), ...Array(Math.round(datosClase.length / 2)).fill([fechas[0].unix(), promedioClase])]
+    const datosRegresion = [
+      ...datosClase.map(d => [d.fecha.unix(), d.peso]),
+      ...Array(Math.round(datosClase.length / 2)).fill([fechas[0].unix(), promedioClase])
+    ]
     return calcularModelo(datosRegresion.map(([x, y]) => [x, Math.log(y)]))
   })
   return { m: average(modelos.map(m => m.m)), b: average(modelos.map(m => m.b)) }

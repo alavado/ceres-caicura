@@ -3,10 +3,11 @@ import { Scatter } from 'react-chartjs-2'
 import { useSelector } from 'react-redux'
 import { max } from 'simple-statistics'
 import { coloresClases } from '../../helpers/colores'
-import { calcularModelo } from '../../helpers/modelo'
+import { calcularModelo, calcularModeloPromediado } from '../../helpers/modelo'
 import moment from 'moment'
 import './ModelosDegradacion.css'
 import { Redirect } from 'react-router-dom'
+import GraficoModeloDegradacion from './GraficoModeloDegradacion'
 
 const ModelosDegradacion = () => {
   
@@ -16,10 +17,27 @@ const ModelosDegradacion = () => {
     return <Redirect to="/" />
   }
 
+  const { m, b } = calcularModeloPromediado(datos, fechas)
   const clases = Array.from(new Set(datos.map(d => d.clase)))
   
   return (
     <div className="ModelosDegradacion">
+      <h1 className="ModelosDegradacion__titulo">Modelo periferia obtenido</h1>
+      <p>Este modelo se construye promediando los modelos por clase detallados más abajo</p>
+      <div className="ModelosDegradacion__contenedor">
+        <div>
+          <p>Parámetros estimados</p>
+          <p>C0 = {Math.exp(b + m * fechas[0].unix())}</p>
+          <p>k = {m}</p>
+        </div>
+        <GraficoModeloDegradacion
+          b={b}
+          m={m}
+          fechas={fechas}
+          datos={datos}
+          clase="promedio"
+        />
+      </div>
       <h1 className="ModelosDegradacion__titulo">Modelos de degradación por clase</h1>
       {clases.map(clase => {
         const datosClase = datos.filter(d => d.clase === clase)
@@ -37,56 +55,13 @@ const ModelosDegradacion = () => {
                 <p>C0 = {Math.exp(b + m * fechas[0].unix())}</p>
                 <p>k = {m}</p>
               </div>
-              <div className="ModelosDegradacion__grafico">
-                <Scatter
-                  data={{
-                    labels: fechas.map(fecha => fecha.unix()),
-                    datasets: [
-                      {
-                        data: datosClase.map(dato => ({
-                          x: dato.fecha.unix(),
-                          y: dato.peso
-                        })),
-                        backgroundColor: coloresClases[clase]
-                      },
-                      {
-                        data: fechas.map(fecha => ({
-                          x: fecha.unix(),
-                          y: Math.exp(b + m * fecha.unix())
-                        })),
-                        pointRadius: 1,
-                        backgroundColor: 'orange',
-                      }
-                    ]
-                  }}
-                  options={{
-                    animation: false,
-                    maintainAspectRatio: false,
-                    legend: {
-                      display: false
-                    },
-                    scales: {
-                      xAxes: [{
-                        gridLines: {
-                          display: false
-                        },
-                        ticks: {
-                          min: fechas[0].unix(),
-                          callback: value => moment(value, 'X').format('DD/MM')
-                        },
-                        scaleLabel: 'Fecha'
-                      }],
-                      yAxes: [{
-                        ticks: {
-                          min: 0,
-                          max: 6000
-                        },
-                        scaleLabel: 'Peso [g]'
-                      }]
-                    }
-                  }}
-                />
-              </div>
+              <GraficoModeloDegradacion
+                b={b}
+                m={m}
+                fechas={fechas}
+                datos={datosClase}
+                clase={clase}
+              />
             </div>
           </div>
       )})}

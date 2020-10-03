@@ -30,6 +30,12 @@ const TablaPorcentajes = () => {
       <h1 className="TablaPorcentajes__titulo">Resultados</h1>
       <div className="TablaPorcentajes__tabla">
         <div className="TablaPorcentajes__fila">
+          <div>Fecha</div>
+          {dias.map(dia => (
+            <div key={`fecha-${dia}`}>{fechaInicioFaena.clone().add(dia, 'days').format('DD/MM')}</div>
+          ))}
+        </div>
+        <div className="TablaPorcentajes__fila">
           <div>Día desde hundimiento</div>
           {diasDesdeHundimiento.map(dia => (
             <div key={`dia-h-${dia}`}>{dia}</div>
@@ -44,12 +50,6 @@ const TablaPorcentajes = () => {
                 return [...prevDias.slice(0, i), Number(e.target.value), ...prevDias.slice(i + 1)]
               })} /> */}
             </div>
-          ))}
-        </div>
-        <div className="TablaPorcentajes__fila">
-          <div>Fecha</div>
-          {dias.map(dia => (
-            <div key={`fecha-${dia}`}>{fechaInicioFaena.clone().add(dia, 'days').format('DD/MM')}</div>
           ))}
         </div>
         {estados.map((estado, i) => (

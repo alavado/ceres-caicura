@@ -7,6 +7,7 @@ import Header from '../Header/Header'
 import Introduccion from '../Introduccion'
 import LecturaDatos from '../LecturaDatos'
 import Login from '../Login/Login'
+import ModeloCentro from '../ModeloCentro'
 import ModelosDegradacion from '../ModelosDegradacion'
 import Navegacion from '../Navegacion'
 import './App.css'
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/datos" component={LecturaDatos} />
           <Route path="/clasificacion" component={Clasificacion} />
           <Route path="/degradacion" component={ModelosDegradacion} />
+          <Route path="/centro" component={ModeloCentro} />
           <Route path="/biomasa" component={Biomasa} />
         </Switch>
       </div>

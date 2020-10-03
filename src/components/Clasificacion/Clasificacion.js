@@ -35,7 +35,7 @@ const Clasificacion = () => {
             onChange={e => setNClusters(Number(e.target.value))}
             value={nClusters}
             max={5}
-            min={2}
+            min={1}
           />
         </label>
         <label>
