@@ -26,7 +26,7 @@ const Clasificacion = () => {
 
   return (
     <div className="Clasificacion">
-      <h1 className="Clasificacion__titulo">Clasificacion por largo de pez</h1>
+      <h1 className="Clasificacion__titulo">Clasificacion automática por largo de pez</h1>
       <form className="Clasificacion__parametros" onSubmit={clasificar}>
         <label className="Clasificacion__parametro">
           <div className="Clasificacion__label">Número de clases:</div>

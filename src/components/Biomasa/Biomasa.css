@@ -1,15 +1,21 @@
 .Biomasa {
   padding-bottom: 10rem;
+  display: flex;
 }
 
 .Biomasa__titulo {
   font-weight: bold;
   font-size: 1.25rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
+}
+
+.Biomasa__parametros {
+  flex: 1;
 }
 
 .Biomasa__contenedor {
   display: flex;
+  flex: 1;
 }
 
 .Biomasa__inputs {

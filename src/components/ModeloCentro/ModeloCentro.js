@@ -1,36 +1,38 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Scatter } from 'react-chartjs-2'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { coloresClases } from '../../helpers/colores'
 import moment from 'moment'
 import './ModeloCentro.css'
+import { cambiaC0, cambiaK } from '../../redux/ducks/centro'
 
 const ModeloCentro = () => {
   
-  const [k, setK] = useState(-0.0000000448)
-  const [c0, setC0] = useState(4215)
+  const { k, c0 } = useSelector(state => state.centro)
   const { fechas, datos } = useSelector(state => state.datos)
+  const dispatch = useDispatch()
   const b = Math.log(c0) - (k * fechas[0].unix())
 
   return (
     <div className="ModeloCentro">
-      <h1>Modelo centro</h1>
-      <div>
-        <label>
-          Peso inicial (C0):
+      <h1 className="ModeloCentro__titulo">Modelo centro (especificación manual)</h1>
+      <div className="ModeloCentro__parametros">
+        <label className="ModeloCentro__parametro">
+          <div className="ModeloCentro__label">Peso inicial (C0):</div>
           <input
             type="number"
-            onChange={e => setC0(Number(e.target.value))}
+            onChange={e => dispatch(cambiaC0(Number(e.target.value)))}
             value={c0}
+            step={10}
           />
         </label>
-        <label>
-          Tasa de degradación (k):
+        <label className="ModeloCentro__parametro">
+          <div className="ModeloCentro__label">Tasa de degradación (k):</div>
           <input
             type="number"
-            onChange={e => setK(Number(e.target.value))}
+            onChange={e => dispatch(cambiaK(Number(e.target.value)))}
             value={k}
-            step={0.00000001}
+            step={0.0000000005}
           />
         </label>
       </div>

@@ -17,15 +17,16 @@ const TablaPorcentajes = () => {
     0, 30, 60, 90
   ])
   const { datos, fechas } = useSelector(state => state.datos)
-  const { fechaInicioFaena } = useSelector(state => state.biomasa)
+  const { k, c0 } = useSelector(state => state.centro)
+  const { fechaInicioFaena, porcentajePeriferia, porcentajeCentro } = useSelector(state => state.biomasa)
   const diasDesdeHundimiento = dias.map(dia => fechaInicioFaena.diff(fechaInicial, 'days') + dia)
 
   const { m, b } = calcularModeloPromediado(datos, fechas)
-  const pesoInicial = Math.exp(b + m * fechas[0].unix())
-
-  const degradaciones = diasDesdeHundimiento.map(dias => 100 - 100 * Math.exp(b + m * (fechaInicioFaena.clone().add(dias, 'days')).unix()) / pesoInicial)
-
-  
+  const pesoInicialModeloPeriferia = Math.exp(b + m * fechas[0].unix())
+  const pesoInicialModeloCentro = c0 * Math.exp(k * fechas[0].unix())
+  const degradacionPeriferia = diasDesdeHundimiento.map(dias => (porcentajePeriferia / 100) * (100 - 100 * Math.exp(b + m * (fechaInicioFaena.clone().add(dias, 'days')).unix()) / pesoInicialModeloPeriferia))
+  const degradacionCentro = diasDesdeHundimiento.map(dias => (porcentajeCentro / 100) * (100 - 100 * c0 * Math.exp(k * (fechaInicioFaena.clone().add(dias, 'days')).unix()) / pesoInicialModeloCentro))
+  const degradaciones = degradacionPeriferia.map((d, i) => d + degradacionCentro[i])
 
   return (
     <div className="TablaPorcentajes">
