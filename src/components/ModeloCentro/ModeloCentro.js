@@ -79,14 +79,20 @@ const ModeloCentro = () => {
                   min: fechas[0].unix(),
                   callback: value => moment(value, 'X').format('DD/MM')
                 },
-                scaleLabel: 'Fecha'
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Fecha'
+                }
               }],
               yAxes: [{
                 ticks: {
                   min: 0,
                   max: 6000
                 },
-                scaleLabel: 'Peso [g]'
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Peso [g]'
+                }
               }]
             }
           }}

@@ -27,7 +27,7 @@ const Biomasa = () => {
       <div className="Biomasa__parametros">
         <h1 className="Biomasa__titulo">Distribución modelos</h1>
         <div className="Biomasa__contenedor_porcentajes">
-          <label>
+          <label className="Biomasa__parametro">
             <div className="Biomasa__label">Periferia:</div>
             <input
               type="number"
@@ -38,7 +38,7 @@ const Biomasa = () => {
               onChange={e => dispatch(cambiaPorcentajePeriferia(e.target.value))}
             />%
           </label>
-          <label>
+          <label className="Biomasa__parametro">
             <div className="Biomasa__label">Centro:</div>
             <input
               type="number"
@@ -52,7 +52,7 @@ const Biomasa = () => {
         </div>
         <h1 className="Biomasa__titulo">Estados de descomposición</h1>
         <div className="Biomasa__inputs">
-          <label>
+          <label className="Biomasa__parametro_descomposicion">
             <div className="Biomasa__label">Tasa cambio de estado diaria:</div>
             <input
               value={tasaCambioEstado}
@@ -62,7 +62,7 @@ const Biomasa = () => {
               type="number"
             />
           </label>
-          <label>
+          <label className="Biomasa__parametro_descomposicion">
             <div className="Biomasa__label">Día aparición tipo pasta:</div>
             <input
               value={diasAparicionPasta}
@@ -71,7 +71,7 @@ const Biomasa = () => {
               type="number"
             />
           </label>
-          <label>
+          <label className="Biomasa__parametro_descomposicion">
             <div className="Biomasa__label">Día aparición huesos y escamas:</div>
             <input
               value={diasAparicionHuesos}
@@ -80,7 +80,7 @@ const Biomasa = () => {
               type="number"
             />
           </label>
-          <label>
+          <label className="Biomasa__parametro_descomposicion">
             <div className="Biomasa__label">Inicio faena: </div>
             <DatePicker
               selected={inicioFaena}
@@ -88,6 +88,7 @@ const Biomasa = () => {
                 dispatch(cambiaFechaInicioFaena(fecha))
                 setInicioFaena(fecha)
               }}
+              dateFormat="dd/MM/yyyy"
               locale="es"
             />
           </label>

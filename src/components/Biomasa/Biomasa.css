@@ -40,3 +40,9 @@
 .Biomasa__contenedor_porcentajes {
   display: flex;
 }
+
+.Biomasa__parametro_descomposicion {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}

@@ -9,6 +9,8 @@ import store from './redux/store'
 
 import { BrowserRouter } from 'react-router-dom'
 
+import 'moment/locale/es'
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

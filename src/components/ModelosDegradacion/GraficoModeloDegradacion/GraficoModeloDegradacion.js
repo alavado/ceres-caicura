@@ -3,7 +3,6 @@ import { Scatter } from 'react-chartjs-2'
 import { coloresClases } from '../../../helpers/colores'
 import moment from 'moment'
 import './GraficoModeloDegradacion.css'
-import NumberFormat from 'react-number-format'
 
 const GraficoModeloDegradacion = ({ b, m, fechas, datos, clase }) => {
   return (
@@ -50,14 +49,20 @@ const GraficoModeloDegradacion = ({ b, m, fechas, datos, clase }) => {
                 min: fechas[0].unix(),
                 callback: value => moment(value, 'X').format('DD/MM')
               },
-              scaleLabel: 'Fecha'
+              scaleLabel: {
+                display: true,
+                labelString: 'Fecha'
+              }
             }],
             yAxes: [{
               ticks: {
                 min: 0,
                 max: 6000
               },
-              scaleLabel: 'Peso [g]'
+              scaleLabel: {
+                display: true,
+                labelString: 'Peso [g]'
+              }
             }]
           }
         }}

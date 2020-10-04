@@ -33,7 +33,10 @@ const GraficosClasificacion = () => {
           },
           scales: {
             xAxes: [{
-              scaleLabel: 'Fecha',
+              scaleLabel: {
+                display: true,
+                labelString: 'Fecha'
+              },
               type: 'linear',
               position: 'bottom',
               ticks: {
@@ -41,7 +44,10 @@ const GraficosClasificacion = () => {
               }
             }],
             yAxes: [{
-              scaleLabel: 'Largo [cm]'
+              scaleLabel: {
+                display: true,
+                labelString: 'Largo [cm]'
+              }
             }]
           },
           legend: {
