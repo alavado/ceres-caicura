@@ -24,7 +24,7 @@ const ModelosDegradacion = () => {
   return (
     <div className="ModelosDegradacion">
       <h1 className="ModelosDegradacion__titulo">Modelo periferia obtenido</h1>
-      <p>Este modelo se construye promediando los modelos de degradación por clase especificados más abajo</p>
+      <p className="ModelosDegradacion__explicacion">Este modelo se construye promediando los parámetros de los modelos de degradación por clase especificados más abajo</p>
       <div className="ModelosDegradacion__contenedor">
         <ParametrosModeloDegradacion
           k={m}

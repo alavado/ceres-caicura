@@ -3,6 +3,7 @@ import { Scatter } from 'react-chartjs-2'
 import { coloresClases } from '../../../helpers/colores'
 import moment from 'moment'
 import './GraficoModeloDegradacion.css'
+import NumberFormat from 'react-number-format'
 
 const GraficoModeloDegradacion = ({ b, m, fechas, datos, clase }) => {
   return (
@@ -33,6 +34,12 @@ const GraficoModeloDegradacion = ({ b, m, fechas, datos, clase }) => {
           maintainAspectRatio: false,
           legend: {
             display: false
+          },
+          tooltips: {
+            callbacks: {
+              title: items => moment(items[0].label, 'X').format('DD [de] MMMM [de] YYYY'),
+              label: item => item.datasetIndex === 0 ? '' : `Peso promedio: ${(item.value / 1000).toLocaleString('de-DE', { maximumFractionDigits: 2 })} kg`
+            }
           },
           scales: {
             xAxes: [{

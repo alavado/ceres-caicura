@@ -64,6 +64,12 @@ const ModeloCentro = () => {
             legend: {
               display: false
             },
+            tooltips: {
+              callbacks: {
+                title: items => moment(items[0].label, 'X').format('DD [de] MMMM [de] YYYY'),
+                label: item => item.datasetIndex === 0 ? '' : `Peso promedio: ${(item.value / 1000).toLocaleString('de-DE', { maximumFractionDigits: 2 })} kg`
+              }
+            },
             scales: {
               xAxes: [{
                 gridLines: {

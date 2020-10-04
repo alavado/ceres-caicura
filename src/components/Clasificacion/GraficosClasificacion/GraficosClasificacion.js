@@ -25,6 +25,12 @@ const GraficosClasificacion = () => {
         options={{
           maintainAspectRatio: false,
           animation: false,
+          tooltips: {
+            callbacks: {
+              title: items => `Pez extraído el ${moment(items[0].label, 'X').format('DD [de] MMMM [de] YYYY')}`,
+              label: item => `Largo: ${item.value.toLocaleString('de-DE', { maximumFractionDigits: 2 })} cm`
+            }
+          },
           scales: {
             xAxes: [{
               scaleLabel: 'Fecha',
