@@ -26,28 +26,30 @@ const Biomasa = () => {
     <div className="Biomasa">
       <div className="Biomasa__parametros">
         <h1 className="Biomasa__titulo">Distribución modelos</h1>
-        <label>
-          <div className="Biomasa__label">Periferia:</div>
-          <input
-            type="number"
-            max={100}
-            min={0}
-            step={1}
-            value={porcentajePeriferia}
-            onChange={e => dispatch(cambiaPorcentajePeriferia(e.target.value))}
-          />%
-        </label>
-        <label>
-          <div className="Biomasa__label">Centro:</div>
-          <input
-            type="number"
-            max={100}
-            min={0}
-            step={1}
-            value={porcentajeCentro}
-            onChange={e => dispatch(cambiaPorcentajeCentro(e.target.value))}
-          />%
-        </label>
+        <div className="Biomasa__contenedor_porcentajes">
+          <label>
+            <div className="Biomasa__label">Periferia:</div>
+            <input
+              type="number"
+              max={100}
+              min={0}
+              step={1}
+              value={porcentajePeriferia}
+              onChange={e => dispatch(cambiaPorcentajePeriferia(e.target.value))}
+            />%
+          </label>
+          <label>
+            <div className="Biomasa__label">Centro:</div>
+            <input
+              type="number"
+              max={100}
+              min={0}
+              step={1}
+              value={porcentajeCentro}
+              onChange={e => dispatch(cambiaPorcentajeCentro(e.target.value))}
+            />%
+          </label>
+        </div>
         <h1 className="Biomasa__titulo">Estados de descomposición</h1>
         <div className="Biomasa__inputs">
           <label>

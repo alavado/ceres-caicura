@@ -28,9 +28,15 @@
 .Biomasa__label {
   width: 10rem;
   margin-right: .5rem;
+  font-size: .85rem;
+  margin-bottom: .25rem;
 }
 
 .Biomasa__inputs label {
   display: flex;
   margin-bottom: .25rem;
+}
+
+.Biomasa__contenedor_porcentajes {
+  display: flex;
 }
