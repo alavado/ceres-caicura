@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { fechaInicial } from '../../../helpers/fechas'
 import { calcularModeloPromediado } from '../../../helpers/modelo'
+import NumberFormat from 'react-number-format'
 import './TablaPorcentajes.css'
 
 const TablaPorcentajes = () => {
@@ -39,22 +40,10 @@ const TablaPorcentajes = () => {
   pecesEnteros = pecesEnteros.map((v, i) => Math.max(0, v - huesos[i] - pasta[i] - mix[i]))
 
   const estados = [
-    {
-      nombre: 'Peces enteros',
-      valores: pecesEnteros
-    },
-    {
-      nombre: 'Mix sólido pasta',
-      valores: mix
-    },
-    {
-      nombre: 'Tipo pasta',
-      valores: pasta
-    },
-    {
-      nombre: 'Huesos y escamas',
-      valores: huesos
-    }
+    { nombre: 'Peces enteros', valores: pecesEnteros },
+    { nombre: 'Mix sólido pasta', valores: mix },
+    { nombre: 'Tipo pasta', valores: pasta },
+    { nombre: 'Huesos y escamas', valores: huesos }
   ]
 
   return (
@@ -63,31 +52,44 @@ const TablaPorcentajes = () => {
       <div className="TablaPorcentajes__tabla">
         <div className="TablaPorcentajes__fila">
           <div>Fecha</div>
-          {dias.map(dia => (
-            <div key={`fecha-${dia}`}>{fechaInicioFaena.clone().add(dia, 'days').format('DD/MM')}</div>
+          {dias.map((dia, i) => (
+            <div key={`fecha-${i}`}>
+              {fechaInicioFaena.clone().add(dia, 'days').format('DD/MM')}
+            </div>
           ))}
         </div>
         <div className="TablaPorcentajes__fila">
           <div>Día desde hundimiento</div>
-          {diasDesdeHundimiento.map(dia => (
-            <div key={`dia-h-${dia}`}>{dia}</div>
+          {diasDesdeHundimiento.map((dia, i) => (
+            <div key={`dia-h-${i}`}>{dia}</div>
           ))}
         </div>
         <div className="TablaPorcentajes__fila">
           <div>Día faena</div>
           {dias.map((dia, i) => (
-            <div key={`dia-faena-${dia}`}>
-              {dia}
-              {/* <input value={dia} type="number" onChange={e => setDias(prevDias => {
-                return [...prevDias.slice(0, i), Number(e.target.value), ...prevDias.slice(i + 1)]
-              })} /> */}
+            <div key={`dia-faena-${i}`}>
+              <NumberFormat
+                value={dia}
+                className="TablaPorcentajes__input" 
+                onValueChange={v => setDias(prevDias => {
+                  return [
+                    ...prevDias.slice(0, i),
+                    Number(v.value || 0),
+                    ...prevDias.slice(i + 1)
+                  ]
+                })}
+              />
             </div>
           ))}
         </div>
-        {estados.map((estado, i) => (
-          <div key={estado} className="TablaPorcentajes__fila">
+        {estados.map(estado => (
+          <div key={estado.nombre} className="TablaPorcentajes__fila">
             <div>{estado.nombre}</div>
-            {estado.valores.map(v => <div>{v.toLocaleString('de-DE', { maximumFractionDigits: 1 })}%</div>)}
+            {estado.valores.map((v, i) => (
+              <div key={`porcentaje-estado-${estado.nombre}-${i}`}>
+                {v.toLocaleString('de-DE', { maximumFractionDigits: 1 })}%
+              </div>)
+            )}
           </div>
         ))}
         <div className="TablaPorcentajes__fila">

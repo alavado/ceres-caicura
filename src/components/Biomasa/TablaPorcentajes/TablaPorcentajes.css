@@ -18,10 +18,16 @@
 
 .TablaPorcentajes__fila div {
   padding: .25rem;
+  display: flex;
+  align-items: center;
 }
 
 .TablaPorcentajes__titulo {
   font-weight: 600;
   margin-bottom: .5rem;
   font-size: 1rem;
+}
+
+.TablaPorcentajes__input {
+  width: 100%;
 }
