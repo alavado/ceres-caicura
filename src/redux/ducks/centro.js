@@ -3,7 +3,8 @@ const cambiarC0 = 'centro/cambiarC0'
 
 const defaultState = {
   k: -0.0038781319,
-  c0: 3800
+  c0: 3800,
+  fueCambiado: false
 }
 
 export default function reducer(state = defaultState, action) {
@@ -11,7 +12,8 @@ export default function reducer(state = defaultState, action) {
     case cambiarK: {
       return {
         ...state,
-        k: action.payload
+        k: action.payload,
+        fueCambiado: true
       }
     }
     case cambiarC0: {

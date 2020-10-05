@@ -10,14 +10,14 @@ import { calcularModeloPromediado } from '../../helpers/modelo'
 
 const ModeloCentro = () => {
   
-  const { k, c0 } = useSelector(state => state.centro)
+  const { k, c0, fueCambiado } = useSelector(state => state.centro)
   const { fechas, datos } = useSelector(state => state.datos)
   const dispatch = useDispatch()
   const kDias = k / (60 * 60 * 24)
   const b = Math.log(c0) - (kDias * fechas[0].unix())
 
   useEffect(() => {
-    if (datos.length === 0 || fechas.length === 0) {
+    if (fueCambiado || datos.length === 0 || fechas.length === 0) {
       return
     }
     const { m, b } = calcularModeloPromediado(datos, fechas)
