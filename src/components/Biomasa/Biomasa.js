@@ -14,7 +14,8 @@ registerLocale('es', es)
 const Biomasa = () => {
 
   const { nombreArchivo } = useSelector(state => state.datos)
-  const [inicioFaena, setInicioFaena] = useState(new Date())
+  const { fechaInicioFaena } = useSelector(state => state.biomasa)
+  const [, setInicioFaena] = useState(new Date())
   const { porcentajeCentro, porcentajePeriferia, diasAparicionHuesos, diasAparicionPasta, tasaCambioEstado } = useSelector(state => state.biomasa)
   const dispatch = useDispatch()
 
@@ -83,11 +84,11 @@ const Biomasa = () => {
           <label className="Biomasa__parametro_descomposicion">
             <div className="Biomasa__label">Inicio faena: </div>
             <DatePicker
-              selected={inicioFaena}
               onChange={fecha => {
                 dispatch(cambiaFechaInicioFaena(fecha))
                 setInicioFaena(fecha)
               }}
+              selected={fechaInicioFaena.toDate()}
               dateFormat="dd/MM/yyyy"
               locale="es"
             />

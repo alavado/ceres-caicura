@@ -7,9 +7,18 @@
   display: flex;
 }
 
-.TablaPorcentajes__fila div {
+.TablaPorcentajes__fila:last-child {
+  border-bottom: 1px solid black;
+}
+
+.TablaPorcentajes__fila > div {
   width: 6rem;
-  border: 1px solid black;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+}
+
+.TablaPorcentajes__fila > div:last-child {
+  border-right: 1px solid black;
 }
 
 .TablaPorcentajes__fila div:first-child {
@@ -35,5 +44,6 @@
 .TablaPorcentajes__superior {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   margin-bottom: .5rem;
 }

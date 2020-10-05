@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { average, max } from 'simple-statistics'
+import { max } from 'simple-statistics'
 import { coloresClases } from '../../helpers/colores'
 import { calcularModelo, calcularModeloPromediado } from '../../helpers/modelo'
 import './ModelosDegradacion.css'

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Scatter } from 'react-chartjs-2'
 import { useDispatch, useSelector } from 'react-redux'
 import { coloresClases } from '../../helpers/colores'
@@ -6,6 +6,7 @@ import moment from 'moment'
 import './ModeloCentro.css'
 import { cambiaC0, cambiaK } from '../../redux/ducks/centro'
 import { fechaInicial } from '../../helpers/fechas'
+import { calcularModeloPromediado } from '../../helpers/modelo'
 
 const ModeloCentro = () => {
   
@@ -15,6 +16,15 @@ const ModeloCentro = () => {
   const kDias = k / (60 * 60 * 24)
   const b = Math.log(c0) - (kDias * fechas[0].unix())
 
+  useEffect(() => {
+    if (datos.length === 0 || fechas.length === 0) {
+      return
+    }
+    const { m, b } = calcularModeloPromediado(datos, fechas)
+    const pesoInicialModeloPeriferia = Math.exp(b + m * fechas[0].unix())
+    dispatch(cambiaC0(pesoInicialModeloPeriferia))
+  }, [datos, fechas, dispatch])
+
   return (
     <div className="ModeloCentro">
       <h1 className="ModeloCentro__titulo">Modelo centro (especificación manual)</h1>
@@ -22,6 +32,7 @@ const ModeloCentro = () => {
         <label className="ModeloCentro__parametro">
           <div className="ModeloCentro__label">Peso inicial [g]:</div>
           <input
+            className="ModeloCentro__input"
             type="number"
             onChange={e => dispatch(cambiaC0(Number(e.target.value)))}
             value={c0}
@@ -31,6 +42,7 @@ const ModeloCentro = () => {
         <label className="ModeloCentro__parametro">
           <div className="ModeloCentro__label">Tasa de degradación k:</div>
           <input
+            className="ModeloCentro__input"
             type="number"
             onChange={e => dispatch(cambiaK(Number(e.target.value)))}
             value={k}
