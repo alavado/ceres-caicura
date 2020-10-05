@@ -36,7 +36,7 @@ const ModeloCentro = () => {
             value={k}
             max={0}
             min={-1}
-            step={0.001}
+            step={0.0001}
           />
         </label>
       </div>
@@ -46,6 +46,7 @@ const ModeloCentro = () => {
             labels: fechas.map(fecha => fecha.unix()),
             datasets: [
               {
+                label: 'Peces',
                 data: datos.map(dato => ({
                   x: dato.fecha.unix(),
                   y: dato.peso
@@ -53,6 +54,7 @@ const ModeloCentro = () => {
                 backgroundColor: coloresClases['promedio']
               },
               {
+                label: 'Modelo',
                 data: fechas.map(fecha => ({
                   x: fecha.unix(),
                   y: Math.exp(b + kDias * fecha.unix())

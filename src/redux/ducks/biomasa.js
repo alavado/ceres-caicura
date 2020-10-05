@@ -11,9 +11,9 @@ const defaultState = {
   fechaInicioFaena: moment(),
   porcentajeCentro: 50,
   porcentajePeriferia: 50,
-  tasaCambioEstado: 0.1,
+  tasaCambioEstado: 0.2,
   diasAparicionPasta: 56,
-  diasAparicionHuesos: 70
+  diasAparicionHuesos: 170
 }
 
 export default function reducer(state = defaultState, action) {

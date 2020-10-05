@@ -2,7 +2,7 @@ const cambiarK = 'centro/cambiarK'
 const cambiarC0 = 'centro/cambiarC0'
 
 const defaultState = {
-  k: -0.02,
+  k: -0.0038781319,
   c0: 3800
 }
 
