@@ -16,10 +16,10 @@ const TablaPorcentajes = () => {
   const diasDesdeHundimiento = dias.map(dia => fechaInicioFaena.diff(fechaInicial, 'days') + dia)
 
   const { m, b } = calcularModeloPromediado(datos, fechas)
-  const pesoInicialModeloPeriferia = Math.exp(b + m * fechas[0].unix())
-  const pesoInicialModeloCentro = c0 * Math.exp(k * fechas[0].unix())
-  const degradacionPeriferia = diasDesdeHundimiento.map(dias => (porcentajePeriferia / 100) * (100 - 100 * Math.exp(b + m * (fechaInicioFaena.clone().add(dias, 'days')).unix()) / pesoInicialModeloPeriferia))
-  const degradacionCentro = diasDesdeHundimiento.map(dias => (porcentajeCentro / 100) * (100 - 100 * c0 * Math.exp(k * (fechaInicioFaena.clone().add(dias, 'days')).unix()) / pesoInicialModeloCentro))
+  const pesoInicialModeloPeriferia = Math.exp(b + m * fechas[0].unix() / (60 * 60 * 24))
+  const pesoInicialModeloCentro = c0 * Math.exp(k * fechas[0].unix() / (60 * 60 * 24))
+  const degradacionPeriferia = diasDesdeHundimiento.map(dias => (porcentajePeriferia / 100) * (100 - 100 * Math.exp(b + m * (fechaInicioFaena.clone().add(dias, 'days')).unix() / (60 * 60 * 24)) / pesoInicialModeloPeriferia))
+  const degradacionCentro = diasDesdeHundimiento.map(dias => (porcentajeCentro / 100) * (100 - 100 * c0 * Math.exp(k * (fechaInicioFaena.clone().add(dias, 'days')).unix() / (60 * 60 * 24)) / pesoInicialModeloCentro))
   const degradaciones = degradacionPeriferia.map((d, i) => d + degradacionCentro[i])
 
   let pecesEnteros = degradaciones.map(d => 100 - d)
