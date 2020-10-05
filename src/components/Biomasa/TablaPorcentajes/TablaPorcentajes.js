@@ -7,9 +7,11 @@ import './TablaPorcentajes.css'
 
 const TablaPorcentajes = () => {
 
+  const biomasaTotal = 2848873 / 1000
   const [dias, setDias] = useState([
     0, 30, 60, 90
   ])
+  const [mostrarPorcentajes, setMostrarPorcentajes] = useState(true)
   const { datos, fechas } = useSelector(state => state.datos)
   const { k, c0 } = useSelector(state => state.centro)
   const { fechaInicioFaena, porcentajePeriferia, porcentajeCentro, diasAparicionHuesos, diasAparicionPasta, tasaCambioEstado } = useSelector(state => state.biomasa)
@@ -48,7 +50,12 @@ const TablaPorcentajes = () => {
 
   return (
     <div className="TablaPorcentajes">
-      <h1 className="TablaPorcentajes__titulo">Resultados</h1>
+      <div className="TablaPorcentajes__superior">
+        <h1 className="TablaPorcentajes__titulo">Resultados ({mostrarPorcentajes ? '%' : 'ton'})</h1>
+        <button onClick={() => setMostrarPorcentajes(!mostrarPorcentajes)}>
+          {mostrarPorcentajes ? 'Ver en toneladas' : 'Ver en porcentajes'}
+        </button>
+      </div>
       <div className="TablaPorcentajes__tabla">
         <div className="TablaPorcentajes__fila">
           <div>Fecha</div>
@@ -87,14 +94,18 @@ const TablaPorcentajes = () => {
             <div>{estado.nombre}</div>
             {estado.valores.map((v, i) => (
               <div key={`porcentaje-estado-${estado.nombre}-${i}`}>
-                {v.toLocaleString('de-DE', { maximumFractionDigits: 1 })}%
+                {(mostrarPorcentajes ? v : (v * biomasaTotal / 100)).toLocaleString('de-DE', { maximumFractionDigits: 1 })}{mostrarPorcentajes ? '%' : ''}
               </div>)
             )}
           </div>
         ))}
         <div className="TablaPorcentajes__fila">
           <div>Degradación</div>
-          {degradaciones.map((d, i) => <div key={`degradacion-${i}`}>{d.toLocaleString('de-DE', { maximumFractionDigits: 1 })}%</div>)}
+          {degradaciones.map((d, i) => (
+            <div key={`degradacion-${i}`}>
+              {(mostrarPorcentajes ? d : (d * biomasaTotal / 100)).toLocaleString('de-DE', { maximumFractionDigits: 1 })}{mostrarPorcentajes ? '%' : ''}
+            </div>
+          ))}
         </div>
       </div>
     </div>

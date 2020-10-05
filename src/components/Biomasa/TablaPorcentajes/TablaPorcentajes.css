@@ -31,3 +31,9 @@
 .TablaPorcentajes__input {
   width: 100%;
 }
+
+.TablaPorcentajes__superior {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: .5rem;
+}
