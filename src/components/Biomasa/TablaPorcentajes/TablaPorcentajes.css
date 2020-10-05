@@ -7,18 +7,24 @@
   display: flex;
 }
 
+.TablaPorcentajes__fila:first-child {
+  background-color: #0288D1;
+  color: white;
+  font-weight: 600;
+}
+
 .TablaPorcentajes__fila:last-child {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #212121;
 }
 
 .TablaPorcentajes__fila > div {
   width: 6rem;
-  border-left: 1px solid black;
-  border-top: 1px solid black;
+  border-left: 1px solid #212121;
+  border-top: 1px solid #212121;
 }
 
 .TablaPorcentajes__fila > div:last-child {
-  border-right: 1px solid black;
+  border-right: 1px solid #212121;
 }
 
 .TablaPorcentajes__fila div:first-child {
@@ -32,9 +38,9 @@
 }
 
 .TablaPorcentajes__titulo {
-  font-weight: 600;
   margin-bottom: .5rem;
-  font-size: 1rem;
+  font-weight: bold;
+  font-size: 1.25rem;
 }
 
 .TablaPorcentajes__input {
@@ -44,6 +50,27 @@
 .TablaPorcentajes__superior {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   margin-bottom: .5rem;
+}
+
+.TablaPorcentajes__boton_unidades {
+  outline: none;
+  border: 1px solid #424242;
+  font-size: .75rem;
+}
+
+.TablaPorcentajes__boton_unidades:first-child {
+  border-top-left-radius: .5rem;
+  border-bottom-left-radius: .5rem;
+}
+
+.TablaPorcentajes__boton_unidades:last-child {
+  border-top-right-radius: .5rem;
+  border-bottom-right-radius: .5rem;
+}
+
+.TablaPorcentajes__boton_unidades--activo {
+  background-color: #0288D1;
+  color: white;
 }

@@ -7,6 +7,7 @@ import './ModelosDegradacion.css'
 import { Redirect } from 'react-router-dom'
 import GraficoModeloDegradacion from './GraficoModeloDegradacion'
 import ParametrosModeloDegradacion from './ParametrosModeloDegradacion'
+import TablaErrores from './TablaErrores'
 
 const ModelosDegradacion = () => {
   
@@ -35,6 +36,7 @@ const ModelosDegradacion = () => {
           datos={datos}
           clase="promedio"
         />
+        <TablaErrores />
       </div>
       <h1 className="ModelosDegradacion__titulo">Modelos de degradación por clase</h1>
       {clases.map(clase => {

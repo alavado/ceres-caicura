@@ -1,5 +1,6 @@
 const cambiarK = 'centro/cambiarK'
 const cambiarC0 = 'centro/cambiarC0'
+const bloquear = 'centro/bloquear'
 
 const defaultState = {
   k: -0.0038781319,
@@ -10,16 +11,22 @@ const defaultState = {
 export default function reducer(state = defaultState, action) {
   switch (action.type) {
     case cambiarK: {
+      console.log(action.payload)
       return {
         ...state,
         k: action.payload,
-        fueCambiado: true
       }
     }
     case cambiarC0: {
       return {
         ...state,
         c0: action.payload
+      }
+    }
+    case bloquear: {
+      return {
+        ...state,
+        fueCambiado: true
       }
     }
     default:
@@ -40,3 +47,7 @@ export const cambiaC0 = c0 => {
     payload: c0
   }
 }
+
+export const bloqueaValores = () => ({
+  type: bloquear
+})

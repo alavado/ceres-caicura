@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { coloresClases } from '../../helpers/colores'
 import moment from 'moment'
 import './ModeloCentro.css'
-import { cambiaC0, cambiaK } from '../../redux/ducks/centro'
+import { bloqueaValores, cambiaC0, cambiaK } from '../../redux/ducks/centro'
 import { fechaInicial } from '../../helpers/fechas'
 import { calcularModeloPromediado } from '../../helpers/modelo'
 
@@ -23,7 +23,8 @@ const ModeloCentro = () => {
     const { m, b } = calcularModeloPromediado(datos, fechas)
     const pesoInicialModeloPeriferia = Math.exp(b + m * fechas[0].unix())
     dispatch(cambiaC0(pesoInicialModeloPeriferia))
-  }, [datos, fechas, dispatch])
+    dispatch(cambiaK(m * (60 * 60 * 24)))
+  }, [datos, fechas, dispatch, fueCambiado])
 
   return (
     <div className="ModeloCentro">
@@ -34,7 +35,10 @@ const ModeloCentro = () => {
           <input
             className="ModeloCentro__input"
             type="number"
-            onChange={e => dispatch(cambiaC0(Number(e.target.value)))}
+            onChange={e => {
+              dispatch(cambiaC0(Number(e.target.value)))
+              dispatch(bloqueaValores())
+            }}
             value={c0}
             step={10}
           />
@@ -44,7 +48,10 @@ const ModeloCentro = () => {
           <input
             className="ModeloCentro__input"
             type="number"
-            onChange={e => dispatch(cambiaK(Number(e.target.value)))}
+            onChange={e => {
+              dispatch(cambiaK(Number(e.target.value)))
+              dispatch(bloqueaValores())
+            }}
             value={k}
             max={0}
             min={-1}

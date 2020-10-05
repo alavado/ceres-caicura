@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { fechaInicial } from '../../../helpers/fechas'
 import { calcularModeloPromediado } from '../../../helpers/modelo'
 import NumberFormat from 'react-number-format'
+import classNames from 'classnames'
 import './TablaPorcentajes.css'
 
 const TablaPorcentajes = () => {
@@ -54,9 +55,26 @@ const TablaPorcentajes = () => {
     <div className="TablaPorcentajes">
       <div className="TablaPorcentajes__superior">
         <h1 className="TablaPorcentajes__titulo">Resultados ({mostrarPorcentajes ? '%' : 'ton'})</h1>
-        <button onClick={() => setMostrarPorcentajes(!mostrarPorcentajes)}>
-          {mostrarPorcentajes ? 'Ver en toneladas' : 'Ver en porcentajes'}
-        </button>
+        <div>
+          <button
+            className={classNames({
+              TablaPorcentajes__boton_unidades: true,
+              'TablaPorcentajes__boton_unidades--activo': !mostrarPorcentajes
+            })}
+            onClick={() => setMostrarPorcentajes(false)}
+          >
+            ton
+          </button>
+          <button
+            className={classNames({
+              TablaPorcentajes__boton_unidades: true,
+              'TablaPorcentajes__boton_unidades--activo': mostrarPorcentajes
+            })}
+            onClick={() => setMostrarPorcentajes(true)}
+          >
+            %
+          </button>
+        </div>
       </div>
       <div className="TablaPorcentajes__tabla">
         <div className="TablaPorcentajes__fila">
