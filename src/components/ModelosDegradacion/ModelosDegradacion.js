@@ -45,7 +45,7 @@ const ModelosDegradacion = () => {
         const datosRegresion = [
           ...datosClase.map(d => [d.fecha.unix(), d.peso]),
           ...Array(Math.round(datosClase.length / 2)).fill([fechas[0].unix(), promedioClase]),
-          ...Array(Math.round(datosClase.length / 2)).fill([fechas[0].unix() + 24 * 60 * 60 * 70, promedioClase * .25])
+          // ...Array(Math.round(datosClase.length / 2)).fill([fechas[0].unix() + 24 * 60 * 60 * 70, promedioClase * .25])
         ]
         const { m, b } = calcularModelo(datosRegresion.map(([x, y]) => [x, Math.log(y)]))
         return (

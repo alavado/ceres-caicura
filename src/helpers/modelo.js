@@ -12,7 +12,7 @@ export const calcularModeloPromediado = (datos, fechas) => {
     const datosRegresion = [
       ...datosClase.map(d => [d.fecha.unix(), d.peso]),
       ...Array(Math.round(datosClase.length / 2)).fill([fechas[0].unix(), maximoClase]),
-      ...Array(Math.round(datosClase.length / 2)).fill([fechas[0].unix() + 24 * 60 * 60 * 70, maximoClase * .25])
+      // ...Array(Math.round(datosClase.length / 2)).fill([fechas[0].unix() + 24 * 60 * 60 * 70, maximoClase * .25])
     ]
     return calcularModelo(datosRegresion.map(([x, y]) => [x, Math.log(y)]))
   })
