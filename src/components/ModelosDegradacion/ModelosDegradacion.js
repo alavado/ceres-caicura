@@ -36,7 +36,7 @@ const ModelosDegradacion = () => {
           datos={datos}
           clase="promedio"
         />
-        <TablaErrores />
+        <div style={{ width: '18rem' }} />
       </div>
       <h1 className="ModelosDegradacion__titulo">Modelos de degradación por clase</h1>
       {clases.map(clase => {
@@ -63,6 +63,11 @@ const ModelosDegradacion = () => {
                 m={m}
                 fechas={fechas}
                 datos={datosClase}
+                clase={clase}
+              />
+              <TablaErrores
+                b={b}
+                m={m}
                 clase={clase}
               />
             </div>

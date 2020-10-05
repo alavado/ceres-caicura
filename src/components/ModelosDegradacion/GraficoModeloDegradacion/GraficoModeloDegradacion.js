@@ -48,7 +48,7 @@ const GraficoModeloDegradacion = ({ b, m, fechas, datos, clase }) => {
               },
               ticks: {
                 min: fechas[0].unix(),
-                callback: value => moment(value, 'X').format('DD/MM')
+                callback: value => moment(value, 'X').format('D/MM'),
               },
               scaleLabel: {
                 display: true,

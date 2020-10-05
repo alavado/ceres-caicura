@@ -1,0 +1,54 @@
+.TablaErrores {
+  font-size: .75rem;
+}
+
+.TablaErrores__header {
+  display: flex;
+  background-color: #0288D1;
+  color: white;
+  font-weight: 600;
+}
+
+.TablaErrores__fila {
+  display: flex;
+}
+
+.TablaErrores__fila:last-child {
+  border-bottom: 1px solid #212121;
+}
+
+.TablaErrores__fila > div:last-child {
+  border-right: 1px solid #212121;
+}
+
+.TablaErrores__fila > div,
+.TablaErrores__header > div {
+  padding: .15rem;
+  border-left: 1px solid #212121;
+  border-top: 1px solid #212121;
+}
+
+.TablaErrores__header > div:first-child,
+.TablaErrores__fila > div:first-child {
+  width: 5rem;
+}
+
+.TablaErrores__header > div:nth-child(2),
+.TablaErrores__fila > div:nth-child(2) {
+  width: 5rem;
+}
+
+.TablaErrores__header > div:nth-child(3),
+.TablaErrores__fila > div:nth-child(3) {
+  width: 5rem;
+}
+
+.TablaErrores__header > div:nth-child(4),
+.TablaErrores__fila > div:nth-child(4) {
+  width: 3rem;
+}
+
+.TablaErrores__header > div:last-child,
+.TablaErrores__fila > div:last-child {
+  text-align: right;
+}
