@@ -38,6 +38,7 @@ const GraficoModeloDegradacion = ({ b, m, fechas, datos, clase }) => {
           tooltips: {
             callbacks: {
               title: items => `${moment(items[0].label, 'X').format('DD [de] MMMM [de] YYYY')} (día ${moment(items[0].label, 'X').diff(fechaInicial, 'days')})`,
+              afterTitle: item => item[0].datasetIndex === 0 ? datos[item[0].index].id : '',
               label: item => item.datasetIndex === 0 ? '' : `Peso promedio: ${(item.value / 1000).toLocaleString('de-DE', { maximumFractionDigits: 2 })} kg`
             }
           },

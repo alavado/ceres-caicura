@@ -15,7 +15,7 @@ const TablaErrores = ({ b, m, clase }) => {
         <div>Modelo [g]</div>
         <div>Error</div>
       </div>
-      {datosClase.map(pez => {
+      {datosClase.slice().sort((p1, p2) => p1.peso > p2.peso ? -1 : 1).map(pez => {
         const { id, peso, fecha } = pez
         const pesoModelo = Math.exp(b + m * fecha.unix())
         return (
