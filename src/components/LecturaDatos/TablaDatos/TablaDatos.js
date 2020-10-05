@@ -18,7 +18,7 @@ const TablaDatos = () => {
           <tr className="TablaDatos__fila">
             <th>ID</th>
             <th>Fecha Extracción</th>
-            <th>Peso estimado [g]</th>
+            <th>Peso [g]</th>
             <th>Largo estimado [cm]</th>
           </tr>
         </thead>

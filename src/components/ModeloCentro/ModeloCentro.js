@@ -5,20 +5,22 @@ import { coloresClases } from '../../helpers/colores'
 import moment from 'moment'
 import './ModeloCentro.css'
 import { cambiaC0, cambiaK } from '../../redux/ducks/centro'
+import { fechaInicial } from '../../helpers/fechas'
 
 const ModeloCentro = () => {
   
   const { k, c0 } = useSelector(state => state.centro)
   const { fechas, datos } = useSelector(state => state.datos)
   const dispatch = useDispatch()
-  const b = Math.log(c0) - (k * fechas[0].unix())
+  const kDias = k / (60 * 60 * 24)
+  const b = Math.log(c0) - (kDias * fechas[0].unix())
 
   return (
     <div className="ModeloCentro">
       <h1 className="ModeloCentro__titulo">Modelo centro (especificación manual)</h1>
       <div className="ModeloCentro__parametros">
         <label className="ModeloCentro__parametro">
-          <div className="ModeloCentro__label">Peso inicial (C0):</div>
+          <div className="ModeloCentro__label">Peso inicial [g]:</div>
           <input
             type="number"
             onChange={e => dispatch(cambiaC0(Number(e.target.value)))}
@@ -27,12 +29,14 @@ const ModeloCentro = () => {
           />
         </label>
         <label className="ModeloCentro__parametro">
-          <div className="ModeloCentro__label">Tasa de degradación (k):</div>
+          <div className="ModeloCentro__label">Tasa de degradación k:</div>
           <input
             type="number"
             onChange={e => dispatch(cambiaK(Number(e.target.value)))}
             value={k}
-            step={0.0000000005}
+            max={0}
+            min={-1}
+            step={0.001}
           />
         </label>
       </div>
@@ -51,7 +55,7 @@ const ModeloCentro = () => {
               {
                 data: fechas.map(fecha => ({
                   x: fecha.unix(),
-                  y: Math.exp(b + k * fecha.unix())
+                  y: Math.exp(b + kDias * fecha.unix())
                 })),
                 pointRadius: 1,
                 backgroundColor: 'orange',
@@ -66,8 +70,8 @@ const ModeloCentro = () => {
             },
             tooltips: {
               callbacks: {
-                title: items => moment(items[0].label, 'X').format('DD [de] MMMM [de] YYYY'),
-                label: item => item.datasetIndex === 0 ? '' : `Peso promedio: ${(item.value / 1000).toLocaleString('de-DE', { maximumFractionDigits: 2 })} kg`
+                title: items => `${moment(items[0].label, 'X').format('DD [de] MMMM [de] YYYY')} (día ${moment(items[0].label, 'X').diff(moment(fechaInicial), 'days')})`,
+                label: item => item.datasetIndex === 0 ? null : `Peso promedio: ${(item.value / 1000).toLocaleString('de-DE', { maximumFractionDigits: 2 })} kg`
               }
             },
             scales: {

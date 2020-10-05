@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import './GraficosClasificacion.css'
 import moment from 'moment'
 import { coloresClases } from '../../../helpers/colores'
+import { fechaInicial } from '../../../helpers/fechas'
 
 const GraficosClasificacion = () => {
 
@@ -27,7 +28,7 @@ const GraficosClasificacion = () => {
           animation: false,
           tooltips: {
             callbacks: {
-              title: items => `Pez extraído el ${moment(items[0].label, 'X').format('DD [de] MMMM [de] YYYY')}`,
+              title: items => `Pez extraído el ${moment(items[0].label, 'X').format('DD [de] MMMM [de] YYYY')} (día ${moment(items[0].label, 'X').diff(fechaInicial, 'days')})`,
               label: item => `Largo: ${item.value.toLocaleString('de-DE', { maximumFractionDigits: 2 })} cm`
             }
           },

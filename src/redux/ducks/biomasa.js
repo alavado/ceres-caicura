@@ -12,8 +12,8 @@ const defaultState = {
   porcentajeCentro: 50,
   porcentajePeriferia: 50,
   tasaCambioEstado: 0.1,
-  diasAparicionPasta: 60,
-  diasAparicionHuesos: 90
+  diasAparicionPasta: 56,
+  diasAparicionHuesos: 70
 }
 
 export default function reducer(state = defaultState, action) {

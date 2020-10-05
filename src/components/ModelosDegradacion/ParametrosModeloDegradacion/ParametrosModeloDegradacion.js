@@ -6,7 +6,7 @@ const ParametrosModeloDegradacion = ({ k, c0 }) => {
     <div className="ParametrosModeloDegradacion">
       <p className="ParametrosModeloDegradacion__titulo">Parámetros estimados</p>
       <p className="ParametrosModeloDegradacion__parametro">C0 = {c0.toLocaleString('de-DE', { maximumFractionDigits: 2 })}</p>
-      <p className="ParametrosModeloDegradacion__parametro">k = {k.toLocaleString('de-DE', { maximumFractionDigits: 10 })}</p>
+      <p className="ParametrosModeloDegradacion__parametro">k = {(k * (60 * 60 * 24)).toLocaleString('de-DE', { maximumFractionDigits: 10 })}</p>
     </div>
   )
 }

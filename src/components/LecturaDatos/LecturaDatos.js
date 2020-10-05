@@ -15,7 +15,7 @@ const LecturaDatos = () => {
         const lineas = texto.split('\n')
         const datos = []
         lineas.slice(1).forEach(linea => {
-          const [id,fecha,,,, peso, largo] = linea.split(',')
+          const [id,fecha,peso,,,, largo] = linea.split(',')
           datos.push([id, fecha, peso, largo])
         })
         dispatch(guardaEstosDatos(datos, archivo.current.files[0].name))

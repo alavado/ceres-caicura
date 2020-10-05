@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { max } from 'simple-statistics'
+import { average, max } from 'simple-statistics'
 import { coloresClases } from '../../helpers/colores'
 import { calcularModelo, calcularModeloPromediado } from '../../helpers/modelo'
 import './ModelosDegradacion.css'
@@ -42,7 +42,11 @@ const ModelosDegradacion = () => {
         const minClase = datosClase.reduce((prev, d) => Math.min(prev, d.largo), [datosClase[0].largo])
         const maxClase = datosClase.reduce((prev, d) => Math.max(prev, d.largo), [datosClase[0].largo])
         const promedioClase = max(datosClase.map(d => d.peso))
-        const datosRegresion = [...datosClase.map(d => [d.fecha.unix(), d.peso]), ...Array(Math.round(datosClase.length / 2)).fill([fechas[0].unix(), promedioClase])]
+        const datosRegresion = [
+          ...datosClase.map(d => [d.fecha.unix(), d.peso]),
+          ...Array(Math.round(datosClase.length / 2)).fill([fechas[0].unix(), promedioClase]),
+          ...Array(Math.round(datosClase.length / 2)).fill([fechas[0].unix() + 24 * 60 * 60 * 70, promedioClase * .25])
+        ]
         const { m, b } = calcularModelo(datosRegresion.map(([x, y]) => [x, Math.log(y)]))
         return (
           <div key={`contenedor-modelo-${clase}`}>

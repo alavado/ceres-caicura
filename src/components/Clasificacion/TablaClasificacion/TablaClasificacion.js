@@ -12,7 +12,7 @@ const TablaClasificacion = () => {
       <div className="TablaClasificacion__header">
         <div>ID</div>
         <div>Fecha Extracción</div>
-        <div>Peso estimado [g]</div>
+        <div>Peso [g]</div>
         <div>Largo estimado [cm]</div>
         <div>Clase</div>
       </div>

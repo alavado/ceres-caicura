@@ -8,10 +8,11 @@ export const calcularModeloPromediado = (datos, fechas) => {
   const clases = Array.from(new Set(datos.map(d => d.clase)))
   const modelos = clases.map(clase => {
     const datosClase = datos.filter(d => d.clase === clase)
-    const promedioClase = max(datosClase.map(d => d.peso))
+    const maximoClase = max(datosClase.map(d => d.peso))
     const datosRegresion = [
       ...datosClase.map(d => [d.fecha.unix(), d.peso]),
-      ...Array(Math.round(datosClase.length / 2)).fill([fechas[0].unix(), promedioClase])
+      ...Array(Math.round(datosClase.length / 2)).fill([fechas[0].unix(), maximoClase]),
+      ...Array(Math.round(datosClase.length / 2)).fill([fechas[0].unix() + 24 * 60 * 60 * 70, maximoClase * .25])
     ]
     return calcularModelo(datosRegresion.map(([x, y]) => [x, Math.log(y)]))
   })
